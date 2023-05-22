@@ -4,7 +4,7 @@
 🐚 a lazy seq and a tco tailcall interface 🦑
 ~~~
 
-## demos
+## use
 
 ### `Stream`
 
