@@ -1,24 +1,23 @@
-# streams.ts
+# iters.ts
 
 ~~~
-🐚 a lazy structure like the stream/lazylist in elixir or scala 🦑
+🐚 a lazy seq and a tco tailcall interface 🦑
 ~~~
-
-## ref by
-
-- [Stream.unfold/2. The Stream module in Elixir is full of… | by Dunya Kirkali | Medium](https://haagwee.medium.com/stream-unfold-2-5c22e5cf1a3d)
-- [Scala Unfold | Genuine Blog](https://blog.genuine.com/2020/07/scala-unfold/)
 
 ## demos
 
-### simple
+### `Stream`
+
+Just like stream/lazylist in elixir or scala.
+
+#### simple
 
 ~~~ ts
 const s = Stream.unfold(0, x => x < 10 ? { mapper: x, iter: x + 1 } : undefined ) ;
 console.log(s.take(3)); // [0, 1, 2]
 ~~~
 
-### fib
+#### fib
 
 ~~~ ts
 // unfold
@@ -40,6 +39,13 @@ console.log(fibs.take(3));
 console.log(fibs.take(14));
 ~~~
 
-## used
 
-- [tailcalls.ts](../tailcalls.ts)
+## idea by
+
+- `Stream`: [Stream.unfold/2. The Stream module in Elixir is full of… | by Dunya Kirkali | Medium](https://haagwee.medium.com/stream-unfold-2-5c22e5cf1a3d)
+- `Tailcall`: [Tail Recursion in JAVA 8 - Knoldus Blogs](https://blog.knoldus.com/tail-recursion-in-java-8/)
+
+
+## see also
+
+- [Scala Unfold | Genuine Blog](https://blog.genuine.com/2020/07/scala-unfold/)
