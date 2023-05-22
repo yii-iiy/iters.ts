@@ -104,3 +104,38 @@ class Stream
     } ;
 } ;
                                                    
+export 
+class TailCall
+<T> 
+{
+    constructor
+    (
+        public readonly isComplete: boolean ,
+        public readonly result: T ,
+        public readonly nextCall: () => TailCall<T> ,
+    ) {} ;
+
+    static done
+    <T>(value: T)
+    : TailCall<T> 
+    {
+        return new TailCall(true, value, () => { throw new Error("not implemented"); }) ;
+    } ;
+
+
+    static call
+    <T>(nextCall: () => TailCall<T>)
+    : TailCall<T> 
+    {
+        return new TailCall(false, null as any, nextCall);
+    } ;
+
+    invoke
+    (): T 
+    {
+        return Stream
+            .iterate(this as TailCall<T>, x => (x.nextCall()))
+            .takeUntil(x => x.isComplete)
+            .reduce((_, x) => x.result, this.result) ;
+    } ;
+} ;
