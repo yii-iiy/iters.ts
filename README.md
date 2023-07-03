@@ -4,6 +4,8 @@
 🐚 a lazy seq and a tco tailcall interface 🦑
 ~~~
 
+**🐌 Moved into [*fp.ts*](../../../fp.ts) 🐌**
+
 ## use
 
 ### `Stream`
